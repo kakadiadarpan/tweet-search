@@ -1,12 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./style/SearchTabs.css";
 
-const propTypes = {
-  searches: PropTypes.array.isRequired,
-  activeSearch: PropTypes.string,
-  onClickTab: PropTypes.func.isRequired
-};
+import "./style/SearchTabs.css";
 
 function SearchTabs(props) {
   return (
@@ -29,6 +24,10 @@ function SearchTabs(props) {
   );
 }
 
-SearchTabs.propTypes = propTypes;
+SearchTabs.propTypes = {
+  searches: PropTypes.array.isRequired,
+  activeSearch: PropTypes.string,
+  onClickTab: PropTypes.func.isRequired
+};
 
 export default SearchTabs;
