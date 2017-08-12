@@ -1,0 +1,24 @@
+.SearchTabs {
+  list-style: none;
+}
+
+.SearchTab {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border-radius: 4px;
+  border: 1px solid #CCC;
+  background: grey;
+  color: white;
+  cursor: pointer;
+  outline: none;
+}
+
+.SearchTab.active {
+  background: #f66826;
+  font-weight: 600;
+}
+
+.SearchTab:hover {
+  border: 1px solid white;
+}

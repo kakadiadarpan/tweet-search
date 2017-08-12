@@ -1,0 +1,41 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #222;
+  height: 80px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.search-results {
+  position: absolute;
+  margin: 0 auto;
+  width: 700px;
+  left: 0;
+  right: 0;
+  bottom: 20px;
+  top: 280px;
+  overflow: auto;
+}
+
+.search-results .placeholder {
+  font-style: italic;
+  color: grey;
+}
+
+.search-results .error {
+  font-style: italic;
+  color: red;
+}
+
+@media (max-width: 700px) {
+  .search-results {
+    width: 100%;
+  }
+}
