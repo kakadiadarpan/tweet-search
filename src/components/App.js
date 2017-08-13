@@ -5,7 +5,7 @@ import Search from "./Search";
 import SearchTabs from "./SearchTabs";
 import TweetList from "./TweetList";
 
-import { searchForTweetsRequested, setActiveSearch } from "../actions";
+import { fetchTweets, setActiveSearch } from "../actions";
 import { searchedTweets, searchesAsArray } from "../selectors";
 
 import "./style/App.css";
@@ -42,7 +42,7 @@ class App extends Component {
           Search for tweets here.
         </p>
         <Search
-          onSearch={this.props.searchForTweetsRequested}
+          onSearch={this.props.fetchTweets}
           searchText={this.props.activeSearch}
         />
 
@@ -73,4 +73,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { searchForTweetsRequested, setActiveSearch })(App);
+export default connect(mapStateToProps, { fetchTweets, setActiveSearch })(App);
