@@ -1,16 +1,15 @@
 import { combineReducers } from "redux";
 import {
   SET_ACTIVE_SEARCH,
-  SEARCH_FOR_TWEETS_REQUESTED,
-  SEARCH_FOR_TWEETS_SUCCESS,
-  SEARCH_FOR_TWEETS_ERROR
+  SEARCH_FOR_TWEETS,
+  SEARCH_FOR_TWEETS_REQUESTED
 } from "./actions";
 
 function tweets(state = {}, action) {
   switch (action.type) {
-    case SEARCH_FOR_TWEETS_SUCCESS:
+    case SEARCH_FOR_TWEETS:
       const newState = { ...state };
-      action.tweets.forEach(tweet => {
+      action.payload.forEach(tweet => {
         newState[tweet.id] = tweet;
       });
 
@@ -24,8 +23,7 @@ function search(state = { searchText: "", isSearching: false }, action) {
   switch (action.type) {
     case SEARCH_FOR_TWEETS_REQUESTED:
       return { ...state, searchText: action.searchText, isSearching: true };
-    case SEARCH_FOR_TWEETS_SUCCESS:
-    case SEARCH_FOR_TWEETS_ERROR:
+    case SEARCH_FOR_TWEETS:
       return { ...state, isSearching: false };
     default:
       return state;
@@ -43,19 +41,15 @@ function searches(state = { activeSearch: "", searches: {} }, action) {
           [action.searchText]: search(state.searches[action.searchText], action)
         }
       };
-    case SEARCH_FOR_TWEETS_SUCCESS:
+    case SEARCH_FOR_TWEETS:
+      const searchText = action.meta.searchText;
       return {
         ...state,
-        error: null,
+        error: action.error ? action.payload.message : null,
         searches: {
           ...state.searches,
-          [action.searchText]: search(state.searches[action.searchText], action)
+          [searchText]: search(state.searches[searchText], action)
         }
-      };
-    case SEARCH_FOR_TWEETS_ERROR:
-      return {
-        ...state,
-        error: action.error
       };
     case SET_ACTIVE_SEARCH:
       return {

@@ -22,7 +22,7 @@
     "react-redux": "^5.0.6",
     "react-tweet": "^1.1.1",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0",
+    "redux-promise": "^0.5.3",
     "reselect": "^3.0.1"
   },
   "scripts": {
