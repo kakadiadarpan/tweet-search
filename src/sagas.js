@@ -8,17 +8,14 @@ import axios from "axios";
 
 const baseUrl = "http://localhost:7890/1.1";
 
-const search = (query) => (
-  axios.get(`${baseUrl}/search/tweets.json?q=${encodeURIComponent(query)}`)
-);
-
 function* fetchTweets(action) {
+  const searchText = action.searchText;
   try {
-    let tweets = yield call(search, action.searchText);
+    let tweets = yield call(axios.get, `${baseUrl}/search/tweets.json?q=${encodeURIComponent(searchText)}`);
     tweets = tweets.data.statuses;
-    yield put(searchForTweetsSuccess(action.searchText, tweets));
+    yield put(searchForTweetsSuccess(searchText, tweets));
   } catch (error) {
-    yield put(searchForTweetsError(action.searchText, error.message));
+    yield put(searchForTweetsError(searchText, error.message));
   }
 }
 
