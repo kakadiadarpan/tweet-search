@@ -2,6 +2,8 @@ The project scaffold code was generated with create-react-app, the auto-generate
 
 ## Folder Structure
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/kakadiadarpan/tweet-search.svg)](https://greenkeeper.io/)
+
 After creation, your project should look like this:
 
 ```
